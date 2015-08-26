@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,13 +18,15 @@ public class MainActivity extends ActionBarActivity {
     StudyCard[] studyCards;
     ListView questionsList;
     int lastQuestionSelected;
+    int currentScore = 0;
+    int numQuestions = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        studyCards = new StudyCard[4];
+        studyCards = new StudyCard[numQuestions];
 
         studyCards[0] = new StudyCard("What is Newton's First Law?",
                 new String[]{"An object continues in blah blah",
@@ -80,6 +83,12 @@ public class MainActivity extends ActionBarActivity {
         if (requestCode == 0 && resultCode == RESULT_OK) {
             boolean answerCorrect = data.getBooleanExtra("answerCorrect", false);
             questionsList.setItemChecked(lastQuestionSelected, answerCorrect);
+
+            if (answerCorrect == true) {
+                currentScore++;
+            }
+            TextView resultsText = (TextView) findViewById(R.id.results_text);
+            resultsText.setText("Score: " + currentScore + " of " + numQuestions);
         }
     }
 
