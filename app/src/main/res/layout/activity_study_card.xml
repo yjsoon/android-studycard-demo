@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
-        android:id="@+id/choice_c_btn"
+        android:id="@+id/choice_a_btn"
         android:layout_above="@+id/choice_b_btn"
         android:layout_centerHorizontal="true" />
 
@@ -26,18 +26,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
-        android:id="@+id/choice_a_btn"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp" />
+        android:id="@+id/choice_b_btn"
+        android:layout_above="@+id/choice_c_btn"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
-        android:id="@+id/choice_b_btn"
-        android:layout_above="@+id/choice_a_btn"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/choice_c_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="78dp" />
 
     <ImageView
         android:layout_width="fill_parent"
