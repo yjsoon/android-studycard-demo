@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class StudyCardActivity extends ActionBarActivity {
@@ -23,7 +25,7 @@ public class StudyCardActivity extends ActionBarActivity {
         Button choiceC = (Button) findViewById(R.id.choice_c_btn);
 
         Intent i = getIntent();
-        StudyCard s = i.getParcelableExtra("study card");
+        final StudyCard s = i.getParcelableExtra("study card");
 
         // get the image resource ID, which we sent over separately
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
@@ -37,6 +39,48 @@ public class StudyCardActivity extends ActionBarActivity {
         choiceA.setText(s.choices[0]);
         choiceB.setText(s.choices[1]);
         choiceC.setText(s.choices[2]);
+
+        choiceA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (s.answerIndex == 0) {
+                    correctAnswer();
+                } else {
+                    wrongAnswer();
+                }
+            }
+        });
+
+        choiceB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (s.answerIndex == 1) {
+                    correctAnswer();
+                } else {
+                    wrongAnswer();
+                }
+            }
+        });
+
+        choiceC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (s.answerIndex == 2) {
+                    correctAnswer();
+                } else {
+                    wrongAnswer();
+                }
+            }
+        });
+
+    }
+
+    private void correctAnswer() {
+        Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void wrongAnswer() {
+        Toast.makeText(getApplicationContext(), "Wrong :(", Toast.LENGTH_SHORT).show();
     }
 
     @Override
