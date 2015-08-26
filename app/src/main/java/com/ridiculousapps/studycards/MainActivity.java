@@ -54,9 +54,10 @@ public class MainActivity extends ActionBarActivity {
         final ListView questionsList = (ListView) findViewById(R.id.questions_list);
 
         ArrayAdapter<StudyCard> adapter = new ArrayAdapter<StudyCard>(this,
-                android.R.layout.simple_list_item_1, studyCards);
+                android.R.layout.simple_list_item_checked, studyCards);
 
         questionsList.setAdapter(adapter);
+        questionsList.setItemChecked(0, true);
 
         questionsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -65,6 +66,7 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(MainActivity.this, StudyCardActivity.class);
                 intent.putExtra("study card", studyCards[position]);
                 intent.putExtra("image", studyCards[position].imageResourceID);
+                questionsList.setItemChecked(position, false);
                 startActivity(intent);
             }
         });
