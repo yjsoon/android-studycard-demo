@@ -64,6 +64,7 @@ public class MainActivity extends ActionBarActivity {
                 Log.d("TJC", "I've clicked on item " + position);
                 Intent intent = new Intent(MainActivity.this, StudyCardActivity.class);
                 intent.putExtra("study card", studyCards[position]);
+                intent.putExtra("image", studyCards[position].imageResourceID);
                 startActivity(intent);
             }
         });

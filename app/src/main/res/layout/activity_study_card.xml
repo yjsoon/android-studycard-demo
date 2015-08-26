@@ -12,39 +12,41 @@
         android:id="@+id/question_text"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp" />
+        android:textColor="#993333"
+        android:textSize="24sp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Choice A"
         android:id="@+id/choice_a_btn"
         android:layout_above="@+id/choice_b_btn"
+        android:textAllCaps="false"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Choice B"
         android:id="@+id/choice_b_btn"
         android:layout_above="@+id/choice_c_btn"
+        android:textAllCaps="false"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Choice C"
         android:id="@+id/choice_c_btn"
+        android:textAllCaps="false"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp" />
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:layout_below="@+id/question_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

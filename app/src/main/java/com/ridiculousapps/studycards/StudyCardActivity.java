@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -23,6 +24,14 @@ public class StudyCardActivity extends ActionBarActivity {
 
         Intent i = getIntent();
         StudyCard s = i.getParcelableExtra("study card");
+
+        // get the image resource ID, which we sent over separately
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        int imageResourceId = i.getIntExtra("image", -1);
+        // check if there's actually an image before we set it:
+        if (imageResourceId != 0 && imageResourceId != -1) {
+            imageView.setImageResource(imageResourceId);
+        }
 
         questionText.setText(s.question);
         choiceA.setText(s.choices[0]);
