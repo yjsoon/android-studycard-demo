@@ -15,6 +15,8 @@ import android.widget.ListView;
 public class MainActivity extends ActionBarActivity {
 
     StudyCard[] studyCards;
+    ListView questionsList;
+    int lastQuestionSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +53,12 @@ public class MainActivity extends ActionBarActivity {
                         "2, 1, 3"},
                 2, R.drawable.diagram);
 
-        final ListView questionsList = (ListView) findViewById(R.id.questions_list);
+        questionsList = (ListView) findViewById(R.id.questions_list);
 
         ArrayAdapter<StudyCard> adapter = new ArrayAdapter<StudyCard>(this,
                 android.R.layout.simple_list_item_checked, studyCards);
 
         questionsList.setAdapter(adapter);
-        questionsList.setItemChecked(0, true);
 
         questionsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,10 +68,19 @@ public class MainActivity extends ActionBarActivity {
                 intent.putExtra("study card", studyCards[position]);
                 intent.putExtra("image", studyCards[position].imageResourceID);
                 questionsList.setItemChecked(position, false);
-                startActivity(intent);
+                lastQuestionSelected = position;
+                startActivityForResult(intent, 0);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            boolean answerCorrect = data.getBooleanExtra("answerCorrect", false);
+            questionsList.setItemChecked(lastQuestionSelected, answerCorrect);
+        }
     }
 
     @Override

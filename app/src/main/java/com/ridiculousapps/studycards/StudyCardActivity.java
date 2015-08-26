@@ -77,10 +77,18 @@ public class StudyCardActivity extends ActionBarActivity {
 
     private void correctAnswer() {
         Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_SHORT).show();
+        Intent data = new Intent();
+        data.putExtra("answerCorrect", true);
+        setResult(RESULT_OK, data);
+        finish();
     }
 
     private void wrongAnswer() {
         Toast.makeText(getApplicationContext(), "Wrong :(", Toast.LENGTH_SHORT).show();
+        Intent data = new Intent();
+        data.putExtra("answerCorrect", false);
+        setResult(RESULT_OK, data);
+        finish();
     }
 
     @Override
